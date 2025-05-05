@@ -1,206 +1,208 @@
-# SISTEMAS DINAMICOS MECANICOS
+# SISTEMAS DINAMICOS HIDRAULICO
 
-> Un sistema dinámico es un modelo matemático que describe cómo evolucionan las variables de un sistema a lo largo del tiempo, siguiendo ciertas reglas deterministas o probabilísticas. Estos sistemas pueden ser descritos por ecuaciones diferenciales o de diferencia y se utilizan para estudiar comportamientos como el movimiento, el crecimiento, o el cambio en diversos campos, como la física, la biología o la economía.
+> Los sistemas dinámicos son modelos matemáticos que describen cómo cambian las variables de un sistema a lo largo del tiempo. Estos sistemas pueden representarse mediante ecuaciones diferenciales o en forma discreta, y se utilizan para analizar el comportamiento de fenómenos en disciplinas como la física, la ingeniería, la biología y la economía. Un sistema dinámico puede ser lineal o no lineal, y su estudio permite predecir la evolución del sistema, analizar su estabilidad y entender su respuesta ante diferentes condiciones iniciales o entradas externas.
 
-## 1. CONSIDERACIONES PARA DESARROLLAR UN SISTEMA DINAMICO MECANICO MASA RESOSRTE AMORTIGUADOR:
+## 1. QUE ES UN SISTEMA HIDRAULICO DINAMICO:
 
-Para desarrollar un sistema dinámico mecánico que involucra una masa, un resorte y un amortiguador, como un modelo de oscilador amortiguado, hay varias consideraciones clave a tener en cuenta:
+Un sistema dinámico hidráulico es un sistema físico en el que el comportamiento dinámico del fluido (como agua o aceite) se describe mediante variables que cambian en el tiempo, como la presión, el caudal y el volumen. Estos sistemas suelen modelarse con ecuaciones diferenciales que representan la relación entre las entradas (como una válvula que se abre) y las salidas (como el caudal o la presión en una tubería).
 
-## 2 Definir el Modelo Físico:
+Ejemplos comunes incluyen tanques conectados por tuberías, sistemas de frenos hidráulicos y servomecanismos hidráulicos. Al igual que en sistemas eléctricos o mecánicos, se pueden analizar propiedades como la estabilidad, la respuesta transitoria y el régimen permanente.
 
-## 2.1 Masa (m):
+## 2 SISTEMA DE TANQUES:
 
-Es el objeto que oscila debido a la interacción con el resorte y el amortiguador. Definir su masa es crucial para calcular la inercia.
+En los sistemas industriales que utilizan tanques, como los procesos de almacenamiento, mezcla o transporte de líquidos, es fundamental mantener constante el nivel del fluido o el flujo de salida. Esto se debe a que variaciones en estos parámetros pueden afectar la calidad del producto, la eficiencia del proceso o incluso la seguridad de la operación. Por esta razón, se implementan sistemas de control automático que regulan el nivel o flujo mediante el ajuste de válvulas, bombas u otras variables de entrada.
 
-## 2.2 Resorte (k):
+## 2.1 GRAFICO DE TANQUES:
 
-El resorte tiene una constante de elasticidad 𝑘 que describe su rigidez. El resorte sigue la ley de Hooke, que establece que la fuerza que ejerce el resorte es proporcional a la elongación (𝐹=−𝑘𝑥F=−kx), donde x es la deformación respecto a la posición de equilibrio.
+![image](https://github.com/user-attachments/assets/2ad94da7-7382-41c5-8ec9-a4a5eb197283)
 
-## 2.3 Amortiguador (b):
+Donde:
+qi= flujo de entrada
+qo = flujo de salida 
+R1 = Resistencia del flujo
+A1 = Area del tanque
+h1 = altura del tanque
 
-El amortiguador se modela como una fuerza viscosa que es proporcional a la velocidad de la masa, $Famort=-b\dot{x}$ donde $\dot{x}$ es la velocidad de la masa y b es el coeficiente de amortiguamiento.
+## 2.2 FORMULAS:
 
-## 3. Ecuación de Movimiento:
+Flujo de salida de tanque
 
-La dinámica del sistema se puede describir mediante una ecuación diferencial de segundo orden. Para este sistema, la suma de las fuerzas es igual a la masa multiplicada por la aceleración:
+$q1=\frac{h1}{R1}$
 
-$m\ddot{x}&plus;b\dot{x}&plus;kx=0$
+Intercambio de masa
 
-$m\ddot{x}$ es la fuerza de inercia de la masa
+$A1\frac{dh1}{dt}=qi-q1$
 
-$b\dot{x}$ es la fuerza de amortiguamiento
+## 3 MODELO q1 como entrada y h1 como salida:
 
-kx es la fuerza elastica de resorte 
+Lo ideal aqui es relacionar las ecuaciones anteriores para buscar la ecuacion segun la solicitud del ejercicio
 
-Esta es una ecuación diferencial lineal homogénea de segundo orden.
+Lo harenos de la siguiente manera:
 
-## 4. Condiciones Iniciales:
+teniendo las siguientes ecuaciones:
 
-Posición inicial x(0) y velocidad inicial $\dot{x}(0)$ son necesarias para resolver la ecuación diferencial.
+$q1=\frac{h1}{R1}$................. $A1\frac{dh1}{dt}=qi-q1$
 
-Estas condiciones determinan completamente el comportamiento del sistema.
+Reemplazamos 1 en 2 de la siguiente manera:
 
-## 5. Análisis de la Solución:
+$A1\frac{dh1}{dt}=\frac{h1}{R1}-q1$
 
-Dependiendo del valor del amortiguamiento 𝑏 y la relación con la masa 𝑚 y la rigidez k, el comportamiento del sistema puede variar
+o despejamos h1 de la ecucacion 1 y reemplazamos en la ecuacion 2:
 
-## 6. Resumen
+$h1=q1*R1$
 
-Para desarrollar un ejercicio de un sistema masa-resorte-amortiguador, debes:
+$R1*A1\frac{dq1}{dt}=qi-q1$
 
-Establecer el modelo físico (masa, resorte, amortiguador).
+## 4 Ejemplo 1:
 
-Derivar la ecuación de movimiento.
+![image](https://github.com/user-attachments/assets/bae75e7c-5f23-412e-979f-8cc1f46e2b07)
 
-Definir las condiciones iniciales.
+Teniendo en cuenta las ecuaciones de previamiente vistas, plnteamos las ecuaciones para los dos tanques:
 
-Analizar el tipo de amortiguamiento y encontrar la solución general.
+$q1=\frac{h1}{R1}$................. $A1\frac{dh1}{dt}=qi-q1$
 
-Verificar la estabilidad y comportamiento a largo plazo.
+$q2=\frac{h2}{R2}$................. $A2\frac{dh1}{dt}=q1-q2$
 
-Considerar métodos numéricos si es necesario.
+para el primer tanque despejamos h1 en la ecuacion 1 y lo reemplazamos en la ecuacion 2 
 
-Evaluar la energía y realizar una revisión física de los resultados.
+$h1=q1*R1$
 
-Este enfoque cubre todos los aspectos esenciales para modelar y analizar el comportamiento de un sistema masa-resorte-amortiguador.
+$R1A1\frac{dq1}{dt}=qi-q1$
 
-## 7. Ejercicio 1:
+para el segundo tanque reemplazamos q2 en la ecuacion 2 de la siguiente manera:
 
-Una masa 𝑚=2kg cuelga de un resorte de constante 𝑘=50 N/m y está conectada a un amortiguador con coeficiente 𝑐= 5 Ns/m. El sistema oscila verticalmente bajo la acción de la gravedad.
+$A2\frac{dh2}{dt}=q1-\frac{h2}{R2}$
 
-consideraciones:
+Despejamos q1 de esta ultima ecuacion de la siguiente manera:
 
-$x(0)=0.05m$ (desplazamiento desde el equilibrio)
+$q1=A2\frac{dh2}{dt}+\frac{h2}{R2}$
 
-$\dot{x}(0)=0$
+ahora derivamos esta ecuacion para reemplazarlo en la euacion de arriba: 
 
-![image](https://github.com/user-attachments/assets/19feb25a-b9c2-44e2-ad83-164858fbbb4e)
+$\frac{dq1}{dt}=A2\frac{d^{2}h2}{dt^{2}}&plus;\frac{dh2}{dt}\frac{1}{R2}$
 
-Diagrama de fuerzas
+La Solucion para este ejercicio es la siguiente:
 
-![image](https://github.com/user-attachments/assets/14acabfd-d7ea-46a9-a2fc-40c66c0db219)
+esta ultima ecuacion la reemplazamos arriba:
 
-Ecuación del movimiento
+$R1A1(A2\frac{d^{2}h2}{dt^{2}}&plus;\frac{dh2}{dt}\frac{1}{R2})=qi-A2\frac{dh2}{dt}+\frac{h2}{R2}$
 
-$m\ddot{x}&plus;c\dot{x}&plus;kx=0$
+## 5. EJERCICIO 2 
 
-Aquí, la gravedad se cancela porque trabajamos respecto a la posición de equilibrio estático.
+Tanques interconectados 
 
-Sustituimos:
+Para este tipo de ejercicios veremos dos tanques al mismo nivel 
 
-$2\ddot{x}&plus;5\dot{x}&plus;50x=0)$
+Del siguiente ejercicio desarrollar el modelo con h2 como salida
 
-$\ddot{x}&plus;2.5\dot{x}&plus;25x=0$
+![image](https://github.com/user-attachments/assets/ab33017f-b7a5-418f-b2a5-8c3112a609f1)
 
-Cuando se considera la gravedad, la ecuación de movimiento es:
+$q_{1}=\frac{h_{1}-h_{2}}{R_{1}}$
 
-$m\ddot{x}&plus;c\dot{x}&plus;kx=mg$
+$A_{1}\frac{dh_{1}}{dt}=(qi-q_{1})$
 
-Donde:x es el desplazamiento desde la posición de reposo natural (se puede definir respecto al equilibrio)
+$h_{1}=q_{1}R_{1}+h_{2}$
 
-mg es la fuerza de gravedad
+$h_{1}=(\frac{A_{2}dh_{2}}{dt}+\frac{h_{2}}{R_{2}})R_{1}+h_{2}$
 
-Podemos reorganizarla para usar en Simulink como:
+$q_{2}=\frac{h_{2}}{R_{2}}$
 
-$\ddot{x}=\frac{1}{m}(-c\dot{x}-kx&plus;mg)$
+$A_{2}\frac{dh_{2}}{dt}=(q_{1}-q_{2})$
 
-## Modelo en Simulink (bloques)
+$A_{2}\frac{dh_{2}}{dt}=(q_{1}-\frac{h_{2}}{R_{2}})$
 
-1. Bloques necesarios
-Desde la biblioteca:
+$q_{1}=A_{2}\frac{dh_{2}}{dt}+\frac{h_{2}}{R_{2}}$
 
-2 Integrators: para calcular velocidad y posición
+$h_{1}=A_{2}R_{1}\frac{dh_{2}}{dt}+\frac{R_{1}h_{2}}{R_{2}}+h_{2}$
 
-Gain (3): para k, c, y 1/𝑚
+$\frac{dh_{1}}{dt}=A_{2}R_{1}\frac{d^{2}h_{2}}{dt^{2}}+\frac{R_{1}}{R_{2}}\frac{dh_{2}}{dt}+\frac{dh_{2}}{dt}$
 
-Sum (2): para sumar fuerzas
+$A_{1}A_{2}R_{1}\frac{d^{2}h_{2}}{dt^{2}}+\frac{A_{1}R_{1}}{R_{2}}\frac{dh_{2}}{dt}+A_{1}\frac{dh_{2}}{dt}=qi-A_{2}\frac{dh_{2}}{dt}-\frac{h_{2}}{R_{2}}$
 
-Constant: para 𝑔=9.81
 
-Product: para mg
 
-Scope: para ver la respuesta
+## 6. EJERCICIO 1 PROPUESTO:
 
-## Conexiones del modelo
+Tenemos dos tanques conectados en serie. El primero recibe un caudal de entrada qi=(t) y el fluido sale por una resistencia R1 segundo tanque. Luego, el segundo tanque descarga por otra resistencia R2
 
-Usa los integradores para:
+Variables:
 
-$\ddot{x}\rightarrow \dot{x}\to x$
+h1 y h2: altura del fluido en los tanques 
+A1y A2: areas de los tanques 
+R1 y R2: resistencias de las salidas de los tanques
+$q1=\frac{h1}{R1}$ caudal entre los tanques
+$q2=\frac{h2}{R2}$ caudal de salida
 
-Calcula las fuerzas:
+ahora: 
 
-$-c\dot{x}$
+$q_1 = \frac{h_1}{R_1} \qquad A_1 \frac{dh_1}{dt} = q_i - q_1$
 
-$-kx&
+$q_2 = \frac{h_2}{R_2} \qquad A_2 \frac{dh_2}{dt} = q_1 - q_2$
 
-+mg
+despejamos h1 en la primera eecuacion:
 
-Suma todas las fuerzas y pásalas por el bloque 1/m
+$h_1 = q_1 \cdot R_1$
 
-El resultado es $\ddot{x}$ , lo cual alimenta el primer integrador.
+Sustituimos en la ecuación del primer tanque:
 
-Conecta x(t) al Scope.
+$R_1 A_1 \frac{dq_1}{dt} = q_i - q_1$
 
-## Parámetros del ejemplo
+sustituimos q2 en la ecuacion del segundo tanque:
 
-Masa m=2
+$A_2 \frac{dh_2}{dt} = q_1 - \frac{h_2}{R_2}$
 
-Constante del resorte k=50
+despejamos q1
 
-Amortiguador c=5
+$q_1 = A_2 \frac{dh_2}{dt} + \frac{h_2}{R_2}$
 
-Gravedad g=9.81
+Derivamos para obtener q1 para obtener:
 
-## Grafico en simulink
+$\frac{dq_1}{dt} = A_2 \frac{d^2 h_2}{dt^2} + \frac{1}{R_2} \frac{dh_2}{dt}$
 
-![image](https://github.com/user-attachments/assets/1d5d337a-1128-4275-a6fe-2f340755c006)
+Sustituimos en la ecuación del primer tanque:
 
-## 8 Ejercicio 2:
+$R_1 A_1 \left( A_2 \frac{d^2 h_2}{dt^2} + \frac{1}{R_2} \frac{dh_2}{dt} \right)$
+$= q_i - \left( A_2 \frac{dh_2}{dt} + \frac{h_2}{R_2} \right)$
 
-Ejercicio: sistema de dos masas, dos resortes y un amortiguador
+## 7. EJERCICIO 2 PROPUESTO
 
-![image](https://github.com/user-attachments/assets/b9a9ce75-fdca-4784-9ab6-793fdef7b0bc)
+Supongamos que tenemos dos tanques conectados por un tubo. El flujo de entrada es constante en el primer tanque, y el flujo de salida en ambos tanques depende de la altura en cada uno de ellos. Las ecuaciones para este sistema son:
 
-Planteamiento
-Dos masas están conectadas en línea sobre una superficie sin fricción:
+![image](https://github.com/user-attachments/assets/206853b8-9154-4315-a3bd-0b88095b467d)
 
-Masa 1: 𝑚=1kg
+$\textbf{Supongamos un sistema de dos tanques con las siguientes condiciones:}$
 
-Masa 2: m=2kg
+$\text{Flujo de entrada constante:} \quad q_{\text{in}}$
 
-Están conectadas con:
+$\text{Flujos de salida:} \quad q_1 = k_1 h_1, \quad q_2 = k_2 h_2$
 
-Resorte 1: conecta la pared a m1, constante 𝑘1=20N/m
+$\text{Ecuaciones:}$
 
-Resorte 2: conecta 𝑚1 y m2 , constante k2 =10N/m
+$\text{Primer tanque:} \quad A_1 \frac{dh_1}{dt} = q_{\text{in}} - k_1 h_1$
 
-Amortiguador: entre m1  y m , coeficiente c=5Ns/m
+$\text{Segundo tanque:} \quad A_2 \frac{dh_2}{dt} = k_1 h_1 - k_2 h_2$
 
-Condiciones iniciales
+$\textbf{Despejamos } h_1 \text{ de la primera ecuación:}$
 
-$x_{1}(0)=0.1m,\dot{x}_{1}(0)=0$
+$h_1 = \frac{q_{\text{in}}}{k_1} - \frac{1}{k_1} \cdot \frac{dh_1}{dt}$
 
-$x_{2}(0)=0,\dot{x}_{2}(0)=0$
+$\textbf{Sustituimos en la ecuación del segundo tanque:}$
 
-Ecuaciones del sistema
+$A_2 \frac{dh_2}{dt} = k_1 \left( \frac{q_{\text{in}}}{k_1} - \frac{1}{k_1} \frac{dh_1}{dt} \right) - k_2 h_2$
 
-Para m1:
+$\text{Ecuación final:}$
 
-$m_{1}\ddot{x}{1}=-k{1}x_{1}-k_{2}(x_{1}-x_{2})-c(\dot{x}{1}-\dot{x}{2})$
+$A_2 \frac{dh_2}{dt} = q_{\text{in}} - \frac{dh_1}{dt} - k_2 h_2$
 
-Para m2:
 
-$m_{2}$$\ddot{x}_{2}$$=-k_{2}(x_{2}-x_{1})$$-c(\hat{x}_{2}-\dot{x}_{1})$
+## 8. RESUMEN
 
-Ahora en simulink
+Un sistema hidráulico es un conjunto de elementos interconectados que manejan fluidos (generalmente agua) para realizar trabajos, como controlar el flujo, transportar o almacenar fluidos. Estos sistemas son fundamentales en ingeniería, especialmente en procesos industriales, construcción, y tratamiento de agua.
 
-![image](https://github.com/user-attachments/assets/cd83871b-e83c-40a9-8760-c8a3295c8621)
+## 9. CONCLUSIONES 
 
-## 9. Conclusiones 
+Los sistemas dinámicos hidráulicos se modelan a partir de la conservación de masa en tanques conectados, asumiendo una relación lineal entre flujo y altura, lo que genera ecuaciones diferenciales acopladas que, gracias a su analogía con circuitos eléctricos, permiten predecir la respuesta transitoria y permanente del sistema y diseñar controladores eficientes en aplicaciones industriales y de tratamiento de agua.
 
-Simulink permite modelar, simular y analizar sistemas dinámicos mecánicos de forma visual e intuitiva, facilitando la comprensión del comportamiento del sistema sin necesidad de resolver manualmente ecuaciones diferenciales.
+## 10. REFERENCIAS
 
-## 10. Referencias 
-
-Clase teorica
-Libro Ogata, K.
+Clase presencia universidad ECCI
