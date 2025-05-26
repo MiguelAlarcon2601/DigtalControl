@@ -1,208 +1,186 @@
-# SISTEMAS DINAMICOS HIDRAULICO
+# FUNCION DE TRANSFERENCIA
 
-> Los sistemas dinámicos son modelos matemáticos que describen cómo cambian las variables de un sistema a lo largo del tiempo. Estos sistemas pueden representarse mediante ecuaciones diferenciales o en forma discreta, y se utilizan para analizar el comportamiento de fenómenos en disciplinas como la física, la ingeniería, la biología y la economía. Un sistema dinámico puede ser lineal o no lineal, y su estudio permite predecir la evolución del sistema, analizar su estabilidad y entender su respuesta ante diferentes condiciones iniciales o entradas externas.
+> La función de transferencia es una herramienta matemática que describe cómo un sistema lineal e invariante en el tiempo responde a una entrada, en el dominio de Laplace.
 
-## 1. QUE ES UN SISTEMA HIDRAULICO DINAMICO:
+$$G(S)=\frac{Y(S)}{U(S)}$$
 
-Un sistema dinámico hidráulico es un sistema físico en el que el comportamiento dinámico del fluido (como agua o aceite) se describe mediante variables que cambian en el tiempo, como la presión, el caudal y el volumen. Estos sistemas suelen modelarse con ecuaciones diferenciales que representan la relación entre las entradas (como una válvula que se abre) y las salidas (como el caudal o la presión en una tubería).
+## 1. ALGEBRA DE BLOQUES 
 
-Ejemplos comunes incluyen tanques conectados por tuberías, sistemas de frenos hidráulicos y servomecanismos hidráulicos. Al igual que en sistemas eléctricos o mecánicos, se pueden analizar propiedades como la estabilidad, la respuesta transitoria y el régimen permanente.
+> La álgebra de bloques es un conjunto de reglas usadas para simplificar y manipular diagramas de bloques en sistemas de control o modelado de sistemas dinámicos. Los diagramas de bloques representan visualmente cómo se conectan las funciones de transferencia entre entradas y salidas mediante bloques funcionales.
 
-## 2 SISTEMA DE TANQUES:
+## 2. QUE ES UN BLOQUE
 
-En los sistemas industriales que utilizan tanques, como los procesos de almacenamiento, mezcla o transporte de líquidos, es fundamental mantener constante el nivel del fluido o el flujo de salida. Esto se debe a que variaciones en estos parámetros pueden afectar la calidad del producto, la eficiencia del proceso o incluso la seguridad de la operación. Por esta razón, se implementan sistemas de control automático que regulan el nivel o flujo mediante el ajuste de válvulas, bombas u otras variables de entrada.
+Un bloque representa una función de transferencia 𝐺(𝑠), que relaciona una señal de entrada 𝑈(𝑠) con una de salida 𝑌(𝑠):
 
-## 2.1 GRAFICO DE TANQUES:
-
-![image](https://github.com/user-attachments/assets/2ad94da7-7382-41c5-8ec9-a4a5eb197283)
+$$Y(S)=G(S)*U(S)$$
 
 Donde:
-qi= flujo de entrada
-qo = flujo de salida 
-R1 = Resistencia del flujo
-A1 = Area del tanque
-h1 = altura del tanque
 
-## 2.2 FORMULAS:
+* 𝑌(𝑠): Transformada de Laplace de la salida
 
-Flujo de salida de tanque
+* 𝑈(𝑠): Transformada de Laplace de la entrada
 
-$q1=\frac{h1}{R1}$
+* 𝑠: Variable de Laplace (𝑠=𝜎+𝑗𝜔)
 
-Intercambio de masa
+Condiciones iniciales nulas (se asume que todo empieza desde reposo)
 
-$A1\frac{dh1}{dt}=qi-q1$
+## 3. PARA QUE SIRVE:
 
-## 3 MODELO q1 como entrada y h1 como salida:
+* Analizar el comportamiento dinámico del sistema
 
-Lo ideal aqui es relacionar las ecuaciones anteriores para buscar la ecuacion segun la solicitud del ejercicio
+* Calcular la respuesta a entradas estándar (escalón, impulso, seno)
 
-Lo harenos de la siguiente manera:
+* Estudiar la estabilidad, amortiguamiento y resonancia
 
-teniendo las siguientes ecuaciones:
+* Diseñar controladores automáticos
 
-$q1=\frac{h1}{R1}$................. $A1\frac{dh1}{dt}=qi-q1$
+* Facilitar el uso de diagramas de bloques
 
-Reemplazamos 1 en 2 de la siguiente manera:
+## 4. ELEMENTOS BASICOS DE ALGEBRA DE BLOQUES
 
-$A1\frac{dh1}{dt}=\frac{h1}{R1}-q1$
+## 4.1 AGRUPACION SERIE O EN CASCADA
 
-o despejamos h1 de la ecucacion 1 y reemplazamos en la ecuacion 2:
+![image](https://github.com/user-attachments/assets/41cd7e76-7393-42c6-a70b-a6f447002427)
 
-$h1=q1*R1$
+## 4.2 AGRUPACION EN PARALELO O EN DESVIACION
 
-$R1*A1\frac{dq1}{dt}=qi-q1$
+![image](https://github.com/user-attachments/assets/dda5d1cf-4cb5-40be-98e5-5a29fe48fb40)
 
-## 4 Ejemplo 1:
+## 4.3 BUCLE DE RETROALIMENTACION NEGATIVA
 
-![image](https://github.com/user-attachments/assets/bae75e7c-5f23-412e-979f-8cc1f46e2b07)
+![image](https://github.com/user-attachments/assets/90290c70-0cd4-4622-8de3-55c796cc5230)
 
-Teniendo en cuenta las ecuaciones de previamiente vistas, plnteamos las ecuaciones para los dos tanques:
+## 4.4 BUCLE RETROALIMENCACION POSITIVA
 
-$q1=\frac{h1}{R1}$................. $A1\frac{dh1}{dt}=qi-q1$
+![image](https://github.com/user-attachments/assets/3ede3cd5-7dcc-4111-8596-5c54c9c1d176)
 
-$q2=\frac{h2}{R2}$................. $A2\frac{dh1}{dt}=q1-q2$
+## 4.5 BUCLE RETROALIMENCACION DIRECTA NEGATIVA
 
-para el primer tanque despejamos h1 en la ecuacion 1 y lo reemplazamos en la ecuacion 2 
+![image](https://github.com/user-attachments/assets/75f5dbf9-4a94-4a2f-a73e-85081eeb32a1)
 
-$h1=q1*R1$
+## 4.6 BUCLE RETROALIMENCACION DIRECTA POSITIVA
 
-$R1A1\frac{dq1}{dt}=qi-q1$
+![image](https://github.com/user-attachments/assets/5a5e0b9c-2a34-4626-945d-c43e5b376a21)
 
-para el segundo tanque reemplazamos q2 en la ecuacion 2 de la siguiente manera:
+## 4.7 SUMADOR PARALELO
 
-$A2\frac{dh2}{dt}=q1-\frac{h2}{R2}$
+![image](https://github.com/user-attachments/assets/4b33e3a9-3a42-452f-becc-d9c48271bd61)
 
-Despejamos q1 de esta ultima ecuacion de la siguiente manera:
+## 4.8 RESTADOR PARALELO
 
-$q1=A2\frac{dh2}{dt}+\frac{h2}{R2}$
+![image](https://github.com/user-attachments/assets/b3a3c405-0478-4ee6-a1a5-5a2c9b8f9b48)
 
-ahora derivamos esta ecuacion para reemplazarlo en la euacion de arriba: 
+## 4.9 CAMBIO DE POSICION
 
-$\frac{dq1}{dt}=A2\frac{d^{2}h2}{dt^{2}}&plus;\frac{dh2}{dt}\frac{1}{R2}$
+![image](https://github.com/user-attachments/assets/6d83488b-c585-482e-b58a-1a61c172659b)
 
-La Solucion para este ejercicio es la siguiente:
+## 4.10 TRANSPOSICION DE UN SUMADOR A LA IZQUIERDA DE UN BLOQUE
 
-esta ultima ecuacion la reemplazamos arriba:
+![image](https://github.com/user-attachments/assets/e3d96ade-1d42-4f3e-afdd-ba345c395554)
 
-$R1A1(A2\frac{d^{2}h2}{dt^{2}}&plus;\frac{dh2}{dt}\frac{1}{R2})=qi-A2\frac{dh2}{dt}+\frac{h2}{R2}$
+## 4.11 TRANSPOSICION DE UN SUMADOR A LA DERECHA DE UN BLOQUE
 
-## 5. EJERCICIO 2 
+![image](https://github.com/user-attachments/assets/e6d8956b-347d-460d-9b11-759f3adef13e)
 
-Tanques interconectados 
+## 4.12 TRANSPONER UNA BIRFURCACION A LA IZQUIERDA DE UN BLOQUE
 
-Para este tipo de ejercicios veremos dos tanques al mismo nivel 
+![image](https://github.com/user-attachments/assets/2280d133-36cd-48c7-8b3b-0e0c7e14617a)
 
-Del siguiente ejercicio desarrollar el modelo con h2 como salida
+## 4.13 TRANSPOSICION DE UN SUMADOR A LA DERECHA DE UN BLOQUE
 
-![image](https://github.com/user-attachments/assets/ab33017f-b7a5-418f-b2a5-8c3112a609f1)
+![image](https://github.com/user-attachments/assets/8145e5b1-421a-4eae-826f-c118f0fc5ab4)
 
-$q_{1}=\frac{h_{1}-h_{2}}{R_{1}}$
+## 5. CONSIDERACIONES:
 
-$A_{1}\frac{dh_{1}}{dt}=(qi-q_{1})$
+* SISO: UNA ENTRADA UNA SALIDA
+* MISO: MULTIPLE ENTRADA UNA SALIDA
+* SIMO: UNA ENTRADA MULTIPLE SALIDA
+* MIMO: MULTIPLE ENTRADA MULTIPLE SALIDA
 
-$h_{1}=q_{1}R_{1}+h_{2}$
+## 6. EJEMPLOS DE CLASE:
 
-$h_{1}=(\frac{A_{2}dh_{2}}{dt}+\frac{h_{2}}{R_{2}})R_{1}+h_{2}$
+# 6.1 EJEMPLOS 1
 
-$q_{2}=\frac{h_{2}}{R_{2}}$
+![image](https://github.com/user-attachments/assets/e6d18017-d681-42c7-abbd-45eefa8b0f43)
 
-$A_{2}\frac{dh_{2}}{dt}=(q_{1}-q_{2})$
+# 6.1 EJEMPLOS 2
 
-$A_{2}\frac{dh_{2}}{dt}=(q_{1}-\frac{h_{2}}{R_{2}})$
+![image](https://github.com/user-attachments/assets/1bb6fe89-6c1b-4e8f-a01a-63d7cb71f295)
 
-$q_{1}=A_{2}\frac{dh_{2}}{dt}+\frac{h_{2}}{R_{2}}$
+## 7. EJEMPLOS PROPUESTOS:
 
-$h_{1}=A_{2}R_{1}\frac{dh_{2}}{dt}+\frac{R_{1}h_{2}}{R_{2}}+h_{2}$
+# 7.1 EJEMPLO PROPUESTO 1:
 
-$\frac{dh_{1}}{dt}=A_{2}R_{1}\frac{d^{2}h_{2}}{dt^{2}}+\frac{R_{1}}{R_{2}}\frac{dh_{2}}{dt}+\frac{dh_{2}}{dt}$
+![image](https://github.com/user-attachments/assets/0c339ddc-66a1-4a21-b4a4-0bd819ed2b81)
 
-$A_{1}A_{2}R_{1}\frac{d^{2}h_{2}}{dt^{2}}+\frac{A_{1}R_{1}}{R_{2}}\frac{dh_{2}}{dt}+A_{1}\frac{dh_{2}}{dt}=qi-A_{2}\frac{dh_{2}}{dt}-\frac{h_{2}}{R_{2}}$
+![image](https://github.com/user-attachments/assets/611b208a-8f01-476a-b4dc-66e165c69e25)
 
+![image](https://github.com/user-attachments/assets/d500c94d-09f8-4419-b699-7636da950d7d)
 
+![image](https://github.com/user-attachments/assets/f626d752-badc-4fed-9df9-fe0d49692566)
 
-## 6. EJERCICIO 1 PROPUESTO:
+![image](https://github.com/user-attachments/assets/5c9f4097-4673-4389-b6b8-abc6a470e776)
 
-Tenemos dos tanques conectados en serie. El primero recibe un caudal de entrada qi=(t) y el fluido sale por una resistencia R1 segundo tanque. Luego, el segundo tanque descarga por otra resistencia R2
+# 7.2 EJEMPLO PROPUESTO 2:
 
-Variables:
+![image](https://github.com/user-attachments/assets/ff889b41-e4d5-4c35-a4d7-d9c9a312a429)
 
-h1 y h2: altura del fluido en los tanques 
-A1y A2: areas de los tanques 
-R1 y R2: resistencias de las salidas de los tanques
-$q1=\frac{h1}{R1}$ caudal entre los tanques
-$q2=\frac{h2}{R2}$ caudal de salida
+![image](https://github.com/user-attachments/assets/e7b70b48-f59a-40bd-9daf-81b880ba93af)
 
-ahora: 
+![image](https://github.com/user-attachments/assets/cd2dd544-a359-4c23-9662-2304b91b21c7)
 
-$q_1 = \frac{h_1}{R_1} \qquad A_1 \frac{dh_1}{dt} = q_i - q_1$
+![image](https://github.com/user-attachments/assets/fef1bfdd-964a-4ef6-8dbb-080f567e0f09)
 
-$q_2 = \frac{h_2}{R_2} \qquad A_2 \frac{dh_2}{dt} = q_1 - q_2$
+![image](https://github.com/user-attachments/assets/4d13d59a-8cc4-483a-ad09-1abe42f5e236)
 
-despejamos h1 en la primera eecuacion:
+![image](https://github.com/user-attachments/assets/0a2ad196-fbe7-4bcd-b3fe-55b0ca859645)
 
-$h_1 = q_1 \cdot R_1$
+## 8. CONCLUSIONES:
 
-Sustituimos en la ecuación del primer tanque:
+El álgebra de bloques es fundamental en el análisis y diseño de sistemas de control. A continuación, se resumen las principales conclusiones:
 
-$R_1 A_1 \frac{dq_1}{dt} = q_i - q_1$
+## 8.1 Facilita el análisis de sistemas complejos
 
-sustituimos q2 en la ecuacion del segundo tanque:
+* Permite representar sistemas dinámicos de forma gráfica y modular.
 
-$A_2 \frac{dh_2}{dt} = q_1 - \frac{h_2}{R_2}$
+* Cada componente del sistema se representa por su función de transferencia.
 
-despejamos q1
+## 8.2 Permite obtener la función de transferencia total
 
-$q_1 = A_2 \frac{dh_2}{dt} + \frac{h_2}{R_2}$
+* Usando las reglas del álgebra de bloques, podemos simplificar un sistema completo a un solo bloque equivalente.
 
-Derivamos para obtener q1 para obtener:
+* Esto facilita el estudio del comportamiento del sistema ante cualquier entrada.
 
-$\frac{dq_1}{dt} = A_2 \frac{d^2 h_2}{dt^2} + \frac{1}{R_2} \frac{dh_2}{dt}$
+## 8.3 Se basa en operaciones simples
 
-Sustituimos en la ecuación del primer tanque:
+* Serie → multiplicación de funciones de transferencia.
 
-$R_1 A_1 \left( A_2 \frac{d^2 h_2}{dt^2} + \frac{1}{R_2} \frac{dh_2}{dt} \right)$
-$= q_i - \left( A_2 \frac{dh_2}{dt} + \frac{h_2}{R_2} \right)$
+* Paralelo → suma de funciones.
 
-## 7. EJERCICIO 2 PROPUESTO
+* Realimentación → fórmulas específicas que dependen del tipo de lazo (positivo o negativo).
 
-Supongamos que tenemos dos tanques conectados por un tubo. El flujo de entrada es constante en el primer tanque, y el flujo de salida en ambos tanques depende de la altura en cada uno de ellos. Las ecuaciones para este sistema son:
+## 8.4 Aplica solo a sistemas lineales e invariantes en el tiempo
 
-![image](https://github.com/user-attachments/assets/206853b8-9154-4315-a3bd-0b88095b467d)
+Una vez obtenida la función de transferencia total, se puede:
 
-$\textbf{Supongamos un sistema de dos tanques con las siguientes condiciones:}$
+* Analizar la estabilidad.
 
-$\text{Flujo de entrada constante:} \quad q_{\text{in}}$
+* Determinar la respuesta temporal y en frecuencia.
 
-$\text{Flujos de salida:} \quad q_1 = k_1 h_1, \quad q_2 = k_2 h_2$
+* Diseñar controladores (como PID, lead-lag, etc.).
 
-$\text{Ecuaciones:}$
+## 8.5 Permite usar software de simulación
 
-$\text{Primer tanque:} \quad A_1 \frac{dh_1}{dt} = q_{\text{in}} - k_1 h_1$
+Herramientas como MATLAB/Simulink se basan en diagramas de bloques para modelar y simular sistemas.
 
-$\text{Segundo tanque:} \quad A_2 \frac{dh_2}{dt} = k_1 h_1 - k_2 h_2$
+## 9. RESUMEN:
 
-$\textbf{Despejamos } h_1 \text{ de la primera ecuación:}$
+> El álgebra de bloques es una herramienta poderosa, intuitiva y sistemática que simplifica el estudio de sistemas dinámicos complejos, ayudando a representar, reducir y analizar su comportamiento mediante funciones de transferencia.
 
-$h_1 = \frac{q_{\text{in}}}{k_1} - \frac{1}{k_1} \cdot \frac{dh_1}{dt}$
+## 10. REFERENCIAS:
 
-$\textbf{Sustituimos en la ecuación del segundo tanque:}$
+* CLASE PRACTICA PROFESOR JORGE COTE
 
-$A_2 \frac{dh_2}{dt} = k_1 \left( \frac{q_{\text{in}}}{k_1} - \frac{1}{k_1} \frac{dh_1}{dt} \right) - k_2 h_2$
 
-$\text{Ecuación final:}$
 
-$A_2 \frac{dh_2}{dt} = q_{\text{in}} - \frac{dh_1}{dt} - k_2 h_2$
 
-
-## 8. RESUMEN
-
-Un sistema hidráulico es un conjunto de elementos interconectados que manejan fluidos (generalmente agua) para realizar trabajos, como controlar el flujo, transportar o almacenar fluidos. Estos sistemas son fundamentales en ingeniería, especialmente en procesos industriales, construcción, y tratamiento de agua.
-
-## 9. CONCLUSIONES 
-
-Los sistemas dinámicos hidráulicos se modelan a partir de la conservación de masa en tanques conectados, asumiendo una relación lineal entre flujo y altura, lo que genera ecuaciones diferenciales acopladas que, gracias a su analogía con circuitos eléctricos, permiten predecir la respuesta transitoria y permanente del sistema y diseñar controladores eficientes en aplicaciones industriales y de tratamiento de agua.
-
-## 10. REFERENCIAS
-
-Clase presencia universidad ECCI
